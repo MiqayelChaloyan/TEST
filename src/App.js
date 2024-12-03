@@ -8,7 +8,7 @@ function App() {
       <div id='W2W_MODAL' className="modal">
         <div className="modal-dialog">
           <div className="modal-header">
-            <h2>Modal in CSS?</h2>
+            <h2>Wearify</h2>
           </div>
           <div className="modal-body">
             <model-viewer
