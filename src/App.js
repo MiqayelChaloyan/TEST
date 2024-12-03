@@ -5,7 +5,11 @@ function App() {
 
 
   const closeModal = () => {
-    document.getElementById('W2W_MODAL').style.display = 'none'
+    const iframeDiv = document.getElementById('my-modal');
+    console.log(iframeDiv, '-> iframeDiv')
+    if(iframeDiv) {
+      iframeDiv.style.display = 'none'
+    }
   }
 
   return (
