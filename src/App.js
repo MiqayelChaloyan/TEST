@@ -2,7 +2,7 @@ import { useState } from "react";
 import './App.css';
 
 function App() {
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
 
   // const closeModal = () => setIsOpen(false);
 
