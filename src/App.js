@@ -4,11 +4,11 @@ import './App.css';
 function App() {
 
 
-  const closeModal = () => {
-    const parentDivId = window.document?.getElementById('my-modal');
+  // const closeModal = () => {
+  //   const parentDivId = window.document?.getElementById('my-modal');
 
-    console.log( window.document, ' window.document', window, 'window'); 
-  }
+  //   console.log( window.document, ' window.document', window, 'window'); 
+  // }
 
   return (
     <>
@@ -16,7 +16,7 @@ function App() {
         <div className="modal-dialog">
           <div className="modal-header">
             <h2>Modal in CSS?</h2>
-            <button id='W2W_CLOSE' className="btn-close" onClick={closeModal} aria-label="Close">×</button>
+            <button id='W2W_CLOSE' className="btn-close" aria-label="Close">×</button>
           </div>
           <div className="modal-body">
             <p>One modal example here! :D</p>
