@@ -14,7 +14,7 @@ function App() {
         <div className="modal-dialog">
           <div className="modal-header">
             <h2>Modal in CSS?</h2>
-            <button id="btn-close" className="btn-close" aria-label="Close">×</button>
+            {/* <button id="btn-close" className="btn-close" aria-label="Close">×</button> */}
           </div>
           <div className="modal-body">
             <p>One modal example here! :D</p>
