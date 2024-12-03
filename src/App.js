@@ -7,7 +7,7 @@ function App() {
   const closeModal = () => {
     const parentDivId = window.document?.getElementById('my-modal');
 
-    console.log(parentDivId, 'parentDivId'); 
+    console.log( window.document, ' window.document', window, 'window'); 
   }
 
   return (
