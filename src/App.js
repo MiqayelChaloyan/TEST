@@ -1,24 +1,25 @@
-import logo from './logo.svg';
+import { useState } from "react";
 import './App.css';
 
 function App() {
+  const [isOpen, setIsOpen] = useState(true);
+
+  // const closeModal = () => setIsOpen(false);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <div id='W2W_MODAL' className="modal" style={{ display: isOpen ? 'flex' : 'none' }}>
+        <div className="modal-dialog">
+          <div className="modal-header">
+            <h2>Modal in CSS?</h2>
+            <button id="W2W_CLOSE" className="btn-close" aria-label="Close">×</button>
+          </div>
+          <div className="modal-body">
+            <p>One modal example here! :D</p>
+          </div>
+        </div>
+      </div>
+    </>
   );
 }
 
