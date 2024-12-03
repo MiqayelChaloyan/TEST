@@ -2,13 +2,10 @@ import { useState } from "react";
 import './App.css';
 
 function App() {
-  const [isOpen, setIsOpen] = useState(false);
-
-  // const closeModal = () => setIsOpen(false);
 
   return (
     <>
-      <div id='W2W_MODAL' className="modal" style={{ display: isOpen ? 'flex' : 'none' }}>
+      <div id='W2W_MODAL' className="modal">
         <div className="modal-dialog">
           <div className="modal-header">
             <h2>Modal in CSS?</h2>
