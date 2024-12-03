@@ -1,23 +1,36 @@
-import { useState } from "react";
 import './App.css';
+import uriGlb from './assets/sneakers.glb';
+
 
 function App() {
-
-
-  const closeModal = () => {
-    document.getElementById('W2W_MODAL').style.display = 'none'
-  }
-
   return (
     <>
       <div id='W2W_MODAL' className="modal">
         <div className="modal-dialog">
           <div className="modal-header">
             <h2>Modal in CSS?</h2>
-            {/* <button id="btn-close" className="btn-close" aria-label="Close">×</button> */}
           </div>
           <div className="modal-body">
-            <p>One modal example here! :D</p>
+            <model-viewer
+              src={uriGlb}
+              seamless-poster
+              environment-image='neutral'
+              shadow-intensity='1'
+              autoplay
+              ar
+              ar-modes='webxr scene-viewer quick-look'
+              camera-controls
+              touch-action='pan-y'
+              auto-rotate
+              i
+              nteraction-prompt-threshold='1500'
+              enable-pan
+              min-field-of-view='1deg'
+              width='1800px'
+              disable-zoom
+              loading='eager'
+            >
+            </model-viewer>
           </div>
         </div>
       </div>
