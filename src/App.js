@@ -11,26 +11,14 @@ function App() {
             <h2>Wearify</h2>
           </div>
           <div className="modal-body">
-            <model-viewer
-              src={uriGlb}
-              seamless-poster
-              environment-image='neutral'
-              shadow-intensity='1'
-              autoplay
-              ar
-              ar-modes='webxr scene-viewer quick-look'
-              camera-controls
-              touch-action='pan-y'
-              auto-rotate
-              i
-              nteraction-prompt-threshold='1500'
-              enable-pan
-              min-field-of-view='1deg'
-              width='1800px'
-              disable-zoom
-              loading='eager'
-            >
-            </model-viewer>
+            <iframe
+              src="https://style.clo-set.com/embed/2b0aae6007514254a9cca9f34296180b/1/c/0?bgColor=%23f5f5f5&ui=0&colorway=0&logo=none"
+              width="100%"
+              height="420px"
+              frameBorder="0"
+              allowFullScreen
+              title="Clo-set Embed"
+            />
           </div>
         </div>
       </div>

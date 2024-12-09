@@ -68,10 +68,10 @@ p {
 }
 
 .modal {
-  background: rgba(0, 0, 0, 0.6);
+  background: rgba(0, 0, 0, 0.6); /* Semi-transparent dark background */
   position: fixed;
   top: 0;
-  left: 0;
+  left: 0; /* Fix this to left, not right, to center modal */
   right: 0;
   bottom: 0;
   z-index: 10;
@@ -85,8 +85,13 @@ p {
   border: #333333 solid 1px;
   border-radius: 5px;
   width: 600px;
-  height: 500px;
-  position: relative;
+  height: auto;
+  max-height: 90vh; /* Adjust for better modal height */
+  position: absolute;
+  overflow: hidden;
+  right: 50px;
+  top: 100px;
+
 }
 
 .modal-body {
