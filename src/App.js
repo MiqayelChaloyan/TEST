@@ -11,6 +11,7 @@ function App() {
     // If a product ID is found in localStorage, set it to the state
     if (storedProductId) {
       setProductId(storedProductId);
+      console.log(productId, 'productId')
     }
   }, []);
 
