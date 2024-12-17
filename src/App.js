@@ -18,7 +18,7 @@ function App() {
     <>
       <div id='W2W_MODAL' className="modal">
         <div className="modal-dialog">
-          <h3>{storedProductId}</h3>
+          <h3>{productId}</h3>
           <div className="modal-body">
             <iframe
               src={`https://style.clo-set.com/embed/2b0aae6007514254a9cca9f34296180b/1/c/0?bgColor=%23f5f5f5&ui=0&colorway=0&logo=none${productId ? `&product_id=${productId}` : ''}`}
