@@ -1,36 +1,27 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import './App.css';
 
 function App() {
+  const [productId, setProductId] = useState(null);
+
   useEffect(() => {
-    // Function to handle messages from the iframe
-    const handleIframeMessage = (event) => {
-      // Ensure the message is from the correct source
-      if (event.origin === 'https://bear-jaguar-ma8y.squarespace.com') {
-        const data = event.data;
-        if (data && data.productId) {
-          console.log('Product ID from iframe:', data.productId);
-          // Now you can use the productId for your purposes
-        }
-      }
-    };
-
-    // Add event listener to listen for messages
-    window.addEventListener('message', handleIframeMessage);
-
-    // Cleanup the event listener on component unmount
-    return () => {
-      window.removeEventListener('message', handleIframeMessage);
-    };
+    // Retrieve the product ID from localStorage
+    const storedProductId = localStorage.getItem('product-id');
+    
+    // If a product ID is found in localStorage, set it to the state
+    if (storedProductId) {
+      setProductId(storedProductId);
+    }
   }, []);
 
   return (
     <>
       <div id='W2W_MODAL' className="modal">
         <div className="modal-dialog">
+          <h3>{storedProductId}</h3>
           <div className="modal-body">
             <iframe
-              src="https://style.clo-set.com/embed/2b0aae6007514254a9cca9f34296180b/1/c/0?bgColor=%23f5f5f5&ui=0&colorway=0&logo=none"
+              src={`https://style.clo-set.com/embed/2b0aae6007514254a9cca9f34296180b/1/c/0?bgColor=%23f5f5f5&ui=0&colorway=0&logo=none${productId ? `&product_id=${productId}` : ''}`}
               width="100%"
               height="420px"
               frameBorder="0"
