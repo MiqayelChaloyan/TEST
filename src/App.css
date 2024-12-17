@@ -68,7 +68,7 @@ p {
 }
 
 .modal {
-  background: rgba(0, 0, 0, 0.6); /* Semi-transparent dark background */
+  /* background: rgba(0, 0, 0, 0.6);  */
   position: fixed;
   top: 0;
   left: 0; /* Fix this to left, not right, to center modal */
