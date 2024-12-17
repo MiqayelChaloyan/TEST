@@ -1,56 +1,47 @@
-// import './App.css';
-// import uriGlb from './assets/sneakers.glb';
+import { useEffect } from 'react';
+import './App.css';
 
-
-// function App() {
-//   return (
-//     <>
-//       <div id='W2W_MODAL' className="modal">
-//         <div className="modal-dialog">
-//           <div className="modal-body">
-//             <iframe
-//               src="https://style.clo-set.com/embed/2b0aae6007514254a9cca9f34296180b/1/c/0?bgColor=%23f5f5f5&ui=0&colorway=0&logo=none"
-//               width="100%"
-//               height="420px"
-//               frameBorder="0"
-//               allowFullScreen
-//               title="Clo-set Embed"
-//             />
-//           </div>
-//         </div>
-//       </div>
-//     </>
-//   );
-// }
-
-// export default App;
-import React, { useEffect, useState } from 'react';
-
-function TryOnModal() {
-  const [itemId, setItemId] = useState(null);
-
+function App() {
   useEffect(() => {
-    // Extract the 'item_id' query parameter from the URL
-    const urlParams = new URLSearchParams(window.location.search);
-    const productId = urlParams.get('data-item-id');
-    if (productId) {
-      setItemId(productId);
-    }
+    // Function to handle messages from the iframe
+    const handleIframeMessage = (event) => {
+      // Ensure the message is from the correct source
+      if (event.origin === 'https://bear-jaguar-ma8y.squarespace.com') {
+        const data = event.data;
+        if (data && data.productId) {
+          console.log('Product ID from iframe:', data.productId);
+          // Now you can use the productId for your purposes
+        }
+      }
+    };
+
+    // Add event listener to listen for messages
+    window.addEventListener('message', handleIframeMessage);
+
+    // Cleanup the event listener on component unmount
+    return () => {
+      window.removeEventListener('message', handleIframeMessage);
+    };
   }, []);
 
   return (
-    <div className="modal-content">
-      {itemId ? (
-        <div>
-          <h2>Product ID: {itemId}</h2>
-          <p>Show the product details or try-on options based on the ID.</p>
-          {/* You can now use the itemId to fetch or display product details */}
+    <>
+      <div id='W2W_MODAL' className="modal">
+        <div className="modal-dialog">
+          <div className="modal-body">
+            <iframe
+              src="https://style.clo-set.com/embed/2b0aae6007514254a9cca9f34296180b/1/c/0?bgColor=%23f5f5f5&ui=0&colorway=0&logo=none"
+              width="100%"
+              height="420px"
+              frameBorder="0"
+              allowFullScreen
+              title="Clo-set Embed"
+            />
+          </div>
         </div>
-      ) : (
-        <p>Loading product...</p>
-      )}
-    </div>
+      </div>
+    </>
   );
 }
 
-export default TryOnModal;
+export default App;
