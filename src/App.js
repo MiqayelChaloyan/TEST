@@ -5,21 +5,23 @@ function App() {
   const [productId, setProductId] = useState(null);
 
   useEffect(() => {
-    // Retrieve the product ID from localStorage
-    const storedProductId = localStorage.getItem('product-id');
-    
-    // If a product ID is found in localStorage, set it to the state
-    if (storedProductId) {
-      setProductId(storedProductId);
+    // Log to check if localStorage is accessible
+    if (typeof window !== "undefined") {
+      console.log('localStorage accessible');
+      const storedProductId = localStorage.getItem('product-id');
+      console.log(storedProductId, 'storedProductId');
+      
+      if (storedProductId) {
+        setProductId(storedProductId);
+      }
     }
   }, []);
 
-  // Log the productId once it's updated
   useEffect(() => {
     if (productId !== null) {
-      console.log(productId, 'productId');
+      console.log('Updated productId:', productId);
     }
-  }, [productId]);  // This effect runs whenever productId changes
+  }, [productId]);
 
   return (
     <>
