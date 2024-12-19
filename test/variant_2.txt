@@ -1,0 +1,144 @@
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    // Get the article element with the class ProductItem
+    const articleElement = document.querySelector('article.ProductItem');
+
+    if (articleElement) {
+      // Retrieve the data-item-id from the article element
+      const itemId = articleElement.getAttribute('data-item-id');
+
+      // Get the button wrapper
+      const buttonWrapper = document.querySelector('.sqs-add-to-cart-button-wrapper');
+
+      if (buttonWrapper) {
+        // Create a new button element
+        const customButton = document.createElement('button');
+
+        // Add custom class and styles
+        customButton.classList.add('custom-try-on-button');
+
+        // Set custom text
+        customButton.textContent = "Try On";
+
+        // Add the data-item-id as an attribute to the button
+        if (itemId) {
+          customButton.setAttribute('data-item-id', itemId);
+        }
+
+        // Add click logic
+        customButton.addEventListener('click', function () {
+          openTryOnModal(itemId);
+        });
+
+        // Append the button as a child to the wrapper
+        buttonWrapper.appendChild(customButton);
+      }
+    }
+  });
+
+  // Function to open a modal with an iframe
+  function openTryOnModal(itemId) {
+    // Create the modal container
+    const modal = document.createElement('div');
+    modal.classList.add('custom-modal');
+    
+    // Create iframe element
+    const iframe = document.createElement('iframe');
+    iframe.src = `https://test-mauve-theta-50.vercel.app`; // Replace with the desired link structure
+    iframe.width = "800";  // Set desired iframe width
+    iframe.height = "600"; // Set desired iframe height
+    iframe.frameBorder = "0"; // Remove iframe border
+    iframe.allowFullscreen = true; // Allow fullscreen for the iframe
+
+    // Add productId as a data attribute to the iframe
+    if (itemId) {
+      localStorage.setItem('product-id', itemId);
+          const data = { productId: "12345", message: "Hello from iframe!" };
+          window.parent.postMessage(data, "https://test-mauve-theta-50.vercel.app");
+    }
+
+    // Create modal content and append iframe
+    const modalContent = document.createElement('div');
+    //modalContent.classList.add('modal-content');
+    modalContent.appendChild(iframe);
+
+    // Create and append the close button
+    const closeButton = document.createElement('button');
+    closeButton.textContent = "x";
+    closeButton.classList.add('close-modal');
+    closeButton.addEventListener('click', function () {
+      modal.remove();
+    });
+
+    modalContent.appendChild(closeButton);
+    modal.appendChild(modalContent);
+
+    // Append the modal to the body
+    document.body.appendChild(modal);
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.custom-try-on-button {
+    white-space: pre-wrap; 
+    background: black; 
+    border: none;
+    color: white; 
+    width: 100%; 
+    cursor: pointer; 
+    height: 60px; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    border-radius: 10px; 
+    font-size: 17px; 
+    font-weight: 500; 
+    margin-top: 10px;
+  }
+  
+  /* Style for the custom modal */
+  .custom-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  /* Close button styling */
+  .close-modal {
+    padding: 10px 20px;
+    background-color: #f44336;
+    color: white;
+    border: none;
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    border-radius: 5px;
+  }
